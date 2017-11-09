@@ -1,0 +1,38 @@
+{
+  "name": "zerotier-service",
+  "description": "functions for the zerotier client json api",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "url": "git://github.com/laduke/zerotier-service.git"
+  },
+  "scripts": {
+    "test": "tape test/test.js",
+    "test:watch": "tape-watch test/test.js -p tap-difflet",
+    "format": "prettier-standard '*.js'",
+    "deps": "dependency-check --entry ./index.js . && dependency-check . --extra --no-dev --entry ./index.js",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.js": [
+        "prettier-standard",
+        "standard",
+        "dependency-check",
+        "git add"
+      ]
+    }
+  },
+  "devDependencies": {
+    "dependency-check": "^2.9.1",
+    "lint-staged": "^4.1.2",
+    "prettier-standard": "^6.0.0",
+    "request": "^2.83.0",
+    "sinon": "^2.3.7",
+    "tap-difflet": "^0.7.0",
+    "tape": "^4.7.0",
+    "tape-watch": "^2.3.0"
+  },
+  "dependencies": {}
+}
