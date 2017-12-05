@@ -11,7 +11,7 @@ var test = require('tape')
 var http = require('http')
 var request = require('request')
 
-var host = 'localhost'
+var host = 'http://localhost'
 var port = '9993'
 var secret = process.env.ZT_SECRET
 

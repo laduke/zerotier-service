@@ -10,13 +10,13 @@ function service (opts) {
   }
 
   if (!port) port = 9993
-  if (!host) host = 'localhost'
+  if (!host) host = 'http://localhost'
 
   // builds options object formatted for request/request & naugtur/xhr
   function options (method) {
     return function (path, data) {
       var options = {
-        uri: 'http://' + host + ':' + port + path,
+        uri: host + ':' + port + path,
         json: true,
 
         method: method.toUpperCase(),

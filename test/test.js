@@ -1,13 +1,13 @@
 /* eslint handle-callback-err: 0 */
 var test = require('tape')
 
-var host = 'localhost'
+var host = 'http://localhost'
 var port = '12345'
 var token = 'abcDEF123'
 
 var service = require('../index')({ host: host, port: port, token: token })
 
-var origin = `http://${host}:${port}`
+var origin = `${host}:${port}`
 var networkId = '0123456789123456'
 
 test('Get Status', function (t) {
