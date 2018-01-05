@@ -35,6 +35,7 @@ function service (opts) {
   return {
     get: options('GET'),
     post: options('POST'),
+    put: options('PUT'),
     delete: options('DELETE')
   }
 }
