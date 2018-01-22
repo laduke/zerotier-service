@@ -1,13 +1,12 @@
 var assert = require('assert')
 
+
 function service (opts) {
   var host = opts.host
   var port = opts.port
   var token = opts.token
 
-  if (process.env.NODE_ENV !== 'production') {
-    assert(token, 'Please provide your auth token in the token: key')
-  }
+  assert(token, 'Please provide your auth token in the token: key')
 
   if (!port) port = 9993
   if (!host) host = 'http://localhost'
@@ -25,7 +24,7 @@ function service (opts) {
         }
       }
 
-      if (data && method === 'POST') {
+      if (data && method === 'POST' || data && method === 'PUT') {
         options.body = data
       }
       return options
