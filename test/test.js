@@ -5,7 +5,7 @@ var host = 'http://localhost'
 var port = '12345'
 var token = 'abcDEF123'
 
-var service = require('../index')({ host: host, port: port, token: token })
+var service = require('../request-options')({ host: host, port: port, token: token })
 
 var origin = `${host}:${port}`
 var networkId = '0123456789123456'
