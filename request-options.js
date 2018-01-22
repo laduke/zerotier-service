@@ -1,6 +1,5 @@
 var assert = require('assert')
 
-
 function service (opts) {
   var host = opts.host
   var port = opts.port

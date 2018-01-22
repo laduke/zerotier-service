@@ -6,23 +6,34 @@ Helper functions for talking to the [ZeroTier service](https://github.com/zeroti
 
 ```
 
-var host = 'localhost'
-var port = 9993
-var token = 'abcDEF123' // your authtoken.secret
-
 var request = require('request')
-var service = require('zerotier-service')({ host: host, port: port, token: token })
 
-var options = service.get('/status')
+var host = 'http://localhost'
+var port = '9993'
+var secret = process.env.ZT_SECRET || '1234'
 
-request(options, function(err, res, body) {
-  console.log(body)
+var ZeroTierOne = require('../index')(
+  { host: host, port: port, token: secret },
+  request
+)
+
+ZeroTierOne.service.getAllNetworks(function (err, res) {
+  console.log(res)
 })
+
 
 ```
 
 # API 
-- service.get('/path')
-- service.post('/path', { data: data })
-- service.delete('/path')
-- host and port default to the default to localhost:9993
+- host and port default to localhost:9993
+- callback signature is `function (err, res) {}`
+## service
+- `createNetwork(networkId, settings, callback)`
+- `updateNetwork(networkId, settings, callback)`
+- `deleteNetwork(networkId, callback)`
+- `getAllNetworks(callback)`
+
+## controller
+- TODO
+
+
