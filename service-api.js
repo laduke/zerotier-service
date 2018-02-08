@@ -33,9 +33,30 @@ module.exports = function (options, request) {
 
 function handleServiceResult (cb) {
   return function (err, res, body) {
-    if (err) return cb(err)
-    if (res.statusCode !== 200) return cb(res)
+    if (err) return cb(handleErr(err))
+    if (res.statusCode !== 200 || err) return cb(handleStatus(res))
 
     cb(null, body)
   }
+}
+
+function handleErr (err) {
+  if (err.errno === 'ECONNREFUSED') {
+    err.message = err.message + '. Is the ZeroTier service running?'
+    err.statusCode = 503
+  }
+
+  return err
+}
+
+function handleStatus (res) {
+  var statusCode = res.statusCode
+  var message = res.message
+
+  if (statusCode === 401) {
+    message = 'Probably the auth token is wrong'
+  }
+  var e = new Error(message || '')
+  e.statusCode = statusCode || 500
+  return e
 }
