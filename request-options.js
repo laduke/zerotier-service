@@ -23,7 +23,7 @@ function service (opts) {
         }
       }
 
-      if (data && method === 'POST' || data && method === 'PUT') {
+      if ((data && method === 'POST') || (data && method === 'PUT')) {
         options.body = data
       }
       return options

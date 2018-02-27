@@ -28,7 +28,6 @@ module.exports = function (options, request) {
     request(options, handleServiceResult(cb))
   }
 
-
   return {
     createNetwork: createNetwork,
     updateNetwork: updateNetwork,
