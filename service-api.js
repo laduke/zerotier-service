@@ -23,11 +23,18 @@ module.exports = function (options, request) {
     request(options, handleServiceResult(cb))
   }
 
+  function getStatus (cb) {
+    var options = service.get('/status')
+    request(options, handleServiceResult(cb))
+  }
+
+
   return {
     createNetwork: createNetwork,
     updateNetwork: updateNetwork,
     deleteNetwork: deleteNetwork,
-    getAllNetworks: getAllNetworks
+    getAllNetworks: getAllNetworks,
+    getStatus: getStatus
   }
 }
 
