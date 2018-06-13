@@ -1,7 +1,7 @@
 {
   "name": "zerotier-service",
   "description": "functions for the zerotier client json api",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "index.js",
   "license": "MIT",
   "repository": {
