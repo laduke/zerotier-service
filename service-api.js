@@ -23,6 +23,12 @@ module.exports = function (options, request) {
     request(options, handleServiceResult(cb))
   }
 
+  function getAllPeers (cb) {
+    var options = service.get('/peer')
+    request(options, handleServiceResult(cb))
+  }
+
+
   function getStatus (cb) {
     var options = service.get('/status')
     request(options, handleServiceResult(cb))
@@ -33,6 +39,7 @@ module.exports = function (options, request) {
     updateNetwork: updateNetwork,
     deleteNetwork: deleteNetwork,
     getAllNetworks: getAllNetworks,
+    getAllPeers: getAllPeers,
     getStatus: getStatus
   }
 }

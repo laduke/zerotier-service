@@ -43,6 +43,17 @@ test('Calls request - list', function (t) {
   })
 })
 
+test('Calls request - listpeers', function (t) {
+  var request = sinon.stub().callsArgWith(1, null, 'request')
+  var serviceApi = require('../service-api')(options, request)
+
+  serviceApi.getAllPeers(function () {
+    t.ok(request.called)
+    t.end()
+  })
+})
+
+
 test('Calls request - some error', function (t) {
   var err = new Error()
   err.code = 'ECONNREFUSED'
