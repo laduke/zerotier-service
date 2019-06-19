@@ -1,3 +1,6 @@
+# Oh Man
+This is a mess. Don't use it; Let's do it over! It's not that big of a thing. 
+
 # What
 Helper functions for talking to the [ZeroTier service](https://github.com/zerotier/ZeroTierOne/tree/master/service) json api. Returns options objects suitable for passing to [request](https://github.com/request/request) (or `xhr`, or `request-promise`... )
 
