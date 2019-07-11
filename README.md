@@ -2,26 +2,31 @@
 This is a mess. Don't use it; Let's do it over! It's not that big of a thing. 
 
 # What
-Helper functions for talking to the [ZeroTier service](https://github.com/zerotier/ZeroTierOne/tree/master/service) json api. Returns options objects suitable for passing to [request](https://github.com/request/request) (or `xhr`, or `request-promise`... )
+Helper functions for talking to the [ZeroTier service](https://github.com/zerotier/ZeroTierOne/tree/master/service) json api.
 
 # Example
-- see test/integration.js
-
 ```
+const Service = require('./index.js')
 
-var request = require('request')
+const authToken = 'contents-of-authtoken.secret'
+const service = new Service({ authToken })
 
-var host = 'http://localhost'
-var port = '9993'
-var secret = process.env.ZT_SECRET || '1234'
+// promise/async
+run()
+async function run () {
+  try {
+    const { body } = await service.info()
+    console.log(JSON.stringify(body, 0, 4))
+  } catch (e) {
+    console.log(e.message)
+  }
+}
 
-var ZeroTierOne = require('../index')(
-  { host: host, port: port, token: secret },
-  request
-)
+// callback
+service.status(function (err, res, body) {
+  if (err) console.error(err.message)
 
-ZeroTierOne.service.getAllNetworks(function (err, res) {
-  console.log(res)
+  console.log(JSON.stringify(body, 0, 4))
 })
 
 
@@ -29,14 +34,17 @@ ZeroTierOne.service.getAllNetworks(function (err, res) {
 
 # API 
 - host and port default to localhost:9993
-- callback signature is `function (err, res) {}`
-## service
-- `createNetwork(networkId, settings, callback)`
-- `updateNetwork(networkId, settings, callback)`
-- `deleteNetwork(networkId, callback)`
-- `getAllNetworks(callback)`
+- authToken should be the contents of ${ZEROTIER_HOME}/authtoken.secret
+- callback/promise signature is from [nanorequest](https://github.com/toddself/nanorequest)
+- see ./bin.js
 
-## controller
-- TODO
-
-
+## methods
+- `info()`
+- `join(networkId)`
+- `leave(networkId)`
+- `network(networkId)`
+- `networks()`
+- `peer(nodeId)`
+- `peers()`
+- `status()`
+- `set(networkId, {allowManaged,allowPublic,allowDefault}, t/f)`

@@ -1,38 +1,36 @@
 {
   "name": "zerotier-service",
+  "bin": {
+    "zt": "./bin.js"
+  },
   "description": "functions for the zerotier client json api",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "main": "index.js",
   "license": "MIT",
   "repository": {
     "url": "git://github.com/laduke/zerotier-service.git"
   },
   "scripts": {
-    "test": "tape test/*.js",
-    "test:watch": "tape-watch test/*.js -p tap-difflet",
+    "test": "tape test.js",
+    "test:watch": "tape-watch test.js -p tap-difflet",
     "format": "prettier-standard '*.js'",
-    "deps": "dependency-check --entry ./index.js . && dependency-check . --extra --no-dev --entry ./index.js",
-    "lint-staged": "lint-staged"
+    "deps": "dependency-check --entry ./index.js . && dependency-check . --extra --no-dev --entry ./index.js"
   },
-  "lint-staged": {
-    "linters": {
-      "src/**/*.js": [
-        "prettier-standard",
-        "standard",
-        "dependency-check",
-        "git add"
-      ]
-    }
+  "eslintConfig": {
+    "extends": "standard"
   },
   "devDependencies": {
-    "dependency-check": "^2.9.1",
-    "lint-staged": "^4.1.2",
-    "prettier-standard": "^6.0.0",
-    "request": "^2.83.0",
-    "sinon": "^2.3.7",
-    "tap-difflet": "^0.7.0",
-    "tape": "^4.7.0",
+    "dependency-check": "^3.4.1",
+    "eslint-config-standard": "^13.0.1",
+    "prettier-standard": "^9.1.1",
+    "standard": "^13.0.1",
+    "tap-difflet": "^0.7.2",
+    "tape": "^4.11.0",
     "tape-watch": "^2.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "concat-stream": "^2.0.0",
+    "eslint": "^6.0.1",
+    "nanorequest": "^3.0.0"
+  }
 }
