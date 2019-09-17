@@ -92,7 +92,6 @@ class Service {
   }
 
   set (nwid, props, cb) {
-    console.log({ nwid, props });
     assert(typeof nwid === 'string', 'Need a Network ID. got ' + nwid)
 
     assert(
@@ -103,7 +102,7 @@ class Service {
     )
 
     props = Object.keys(props).reduce((acc, key) => {
-      return { [key]: props[key] }
+      return { ...acc, [key]: props[key] }
     }, {})
 
     return this.post({ path: `/network/${nwid}`, body: props }, cb)
