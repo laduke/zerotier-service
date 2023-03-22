@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "concat-stream": "^2.0.0",
-    "eslint": "^6.0.1",
-    "nanorequest": "^3.0.0"
+    "nanorequest": "^5.0.0"
   }
 }
