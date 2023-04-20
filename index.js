@@ -1,5 +1,5 @@
 var assert = require('assert')
-var request = require('nanorequest')
+var request = require('nanorequest').nanorequest
 
 class Service {
   constructor ({ authToken, host = 'localhost', port = 9993 }) {
