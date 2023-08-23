@@ -2,7 +2,7 @@ var assert = require('assert')
 var request = require('nanorequest').nanorequest
 
 class Service {
-  constructor ({ authToken, host = 'localhost', port = 9993 }) {
+  constructor ({ authToken, host = '127.0.0.1', port = 9993 }) {
     assert(
       typeof authToken === 'string',
       'We need an authToken to talk to the service.'

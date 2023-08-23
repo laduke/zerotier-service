@@ -19,7 +19,7 @@ test('it requires an authToken', function (t) {
 
 test('default host is localhost', function (t) {
   t.plan(1)
-  t.equal(Service(commonOptions)._host, 'localhost')
+  t.equal(Service(commonOptions)._host, '127.0.0.1')
   t.end()
 })
 
