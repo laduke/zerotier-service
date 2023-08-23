@@ -29,7 +29,7 @@
     "tape-watch": "^2.3.0"
   },
   "dependencies": {
-    "concat-stream": "^2.0.0",
-    "nanorequest": "^5.0.0"
+    "nanorequest": "^5.0.0",
+    "minimist": "*"
   }
 }
