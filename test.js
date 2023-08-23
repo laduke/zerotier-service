@@ -148,6 +148,7 @@ test('it really works', function (t) {
     service
       .get({ path: url })
       .then(({ body }) => {
+        t.assert(!!body.address)
         t.end()
       })
       .catch(err => t.error(err.message))

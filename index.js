@@ -22,7 +22,6 @@ class Service {
     }
 
     this.status = this.status.bind(this)
-    this.info = this.info.bind(this)
     this.peers = this.peers.bind(this)
     this.peer = this.peer.bind(this)
     this.networks = this.networks.bind(this)
@@ -61,10 +60,6 @@ class Service {
 
   status (cb) {
     return this.get({ path: '/status' }, cb)
-  }
-
-  info (cb) {
-    return this.get({ path: '/info' }, cb)
   }
 
   peers (cb) {
