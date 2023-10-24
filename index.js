@@ -104,7 +104,7 @@ class Service {
   }
 }
 
-const ztSettings = ['allowDefault', 'allowManaged', 'allowGlobal']
+const ztSettings = ['allowDefault', 'allowManaged', 'allowGlobal', 'allowDNS']
 
 module.exports = function (opts) {
   return new Service(opts)
